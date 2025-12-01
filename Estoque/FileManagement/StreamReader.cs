@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Estoque.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -18,22 +19,30 @@ namespace Estoque
             {
                 var leitor = new StreamReader(fluxoArquivo);
 
-                leitor.ReadLine();
+                string cabecalho = leitor.ReadLine();
+
+
 
                 while (!leitor.EndOfStream)
                 {
                     
                     var linha = leitor.ReadLine();
-                   
+                    
+                    
                     try
                     {
                         var produto = ConverteStringParaProduto(linha);
                         Console.WriteLine(produto.Nome);    
                     }
-                    catch (Exception ex)
+                    catch (CampoVazioException ex)
                     {
-                        Console.WriteLine(ex.Message);
-                        linha.Skip(1);
+
+                        throw new LeituraArquivoException("Ocorreu um erro durante a leitura do aqruivo!", ex);
+                    }
+                    catch (CaractereInvalidoException ex)
+                    {
+
+                        throw new LeituraArquivoException("Ocorreu um erro durante a leitura do aqruivo!", ex);
                     }
 
                 }
@@ -43,23 +52,30 @@ namespace Estoque
         static Produto ConverteStringParaProduto(string linha)
         {
 
-            var campos = linha.Split(',');
+            string linhaFormatada = linha.TrimEnd(',');
+            var campos = linhaFormatada.Split(',');
 
-            foreach(var obj in campos)
+            foreach (var obj in campos)
             {
-                if(obj.Contains('"'))
-                {
-                    throw new Exception();
-                }
+                if (string.IsNullOrWhiteSpace(obj))
+                    throw new CampoVazioException("O campo lido não pode estar vazio!");
+                if (obj.Contains('"'))
+                    throw new CaractereInvalidoException("Caractére inválido verificado na leitura do arquivo");
+
+
             }
+            
 
             var nome = campos[0];
             var preco = campos[1].Replace('.', ',');
             var categoria = campos[2];
 
+                        
             var precoDouble = double.Parse(preco);
+             
+            
+
             Produto produto = new Produto(nome, precoDouble, categoria);
-         
 
             return produto;
 

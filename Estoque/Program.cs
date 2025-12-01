@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Estoque.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,15 @@ namespace Estoque
     {
         static void Main(string[] args)
         {
-            StreamReader();
+            try
+            {
+                StreamReader();
+
+            }
+            catch(LeituraArquivoException ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
     }
