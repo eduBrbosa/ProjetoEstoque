@@ -5,3 +5,4 @@ C:\Projetos\DesafioEstoque\Estoque\Estoque\bin\Debug\Estoque.exe
 C:\Projetos\DesafioEstoque\Estoque\Estoque\bin\Debug\Estoque.pdb
 C:\Projetos\DesafioEstoque\Estoque\Estoque\obj\Debug\Estoque.exe
 C:\Projetos\DesafioEstoque\Estoque\Estoque\obj\Debug\Estoque.pdb
+C:\Projetos\DesafioEstoque\Estoque\Estoque\obj\Debug\Estoque.exe.config

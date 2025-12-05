@@ -11,15 +11,13 @@ namespace Estoque
     {
         static void Main(string[] args)
         {
-            try
-            {
-                StreamReader();
+            List<Produto> produtos = new List<Produto>();
 
-            }
-            catch(LeituraArquivoException ex) 
-            {
-                Console.WriteLine(ex.Message);
-            }
+            produtos = StreamReader();
+
+            //foreach (Produto produto in produtos)
+            //    Console.WriteLine(produto.Nome);
+
             Console.ReadLine();
         }
     }

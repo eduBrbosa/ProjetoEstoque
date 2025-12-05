@@ -46,6 +46,10 @@
     <Compile Include="Exceptions\CampoVazioException.cs" />
     <Compile Include="Exceptions\CaractereInvalidoException.cs" />
     <Compile Include="Exceptions\LeituraArquivoException.cs" />
+    <Compile Include="Exceptions\FormatoObjetoInvalidoException.cs" />
+    <Compile Include="Exceptions\QuantidadeCamposInvalidaException.cs" />
+    <Compile Include="Exceptions\ProdutoExistenteException.cs" />
+    <Compile Include="Exceptions\ValorCampoInvalidoException.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

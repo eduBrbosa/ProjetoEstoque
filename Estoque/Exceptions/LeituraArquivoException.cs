@@ -15,6 +15,6 @@ namespace Estoque.Exceptions
 
         public LeituraArquivoException(string message) : base(message) { }
 
-        public LeituraArquivoException(string message, Exception innerException) : base(message, innerException) { } 
+        public LeituraArquivoException(Exception innerException) : base("Ocorreu um erro durante a leitura do aqruivo!", innerException) { } 
     }
 }
