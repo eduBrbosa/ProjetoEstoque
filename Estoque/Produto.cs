@@ -18,5 +18,21 @@ namespace Estoque
             Preco = preco;
             Categoria = categoria;
         }
+
+        public void AtualizarNome(string novoNome)
+        {
+            Nome = novoNome;
+        }
+        public void AtualizarPreco(double novoPreco)
+        {
+            Preco = novoPreco;
+        }
+        public void AtualizarCategoria(string novaCategoria)
+        {
+            Categoria = novaCategoria;
+        }
+
+        
+            
     }
 }

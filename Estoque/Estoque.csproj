@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRUD\OperacoesCrud.cs" />
     <Compile Include="Exceptions\CampoVazioException.cs" />
     <Compile Include="Exceptions\CaractereInvalidoException.cs" />
     <Compile Include="Exceptions\LeituraArquivoException.cs" />
