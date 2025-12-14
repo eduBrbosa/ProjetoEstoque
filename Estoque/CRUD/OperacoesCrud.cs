@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Estoque.CRUD
 {
     public class OperacoesCrud
@@ -12,8 +13,9 @@ namespace Estoque.CRUD
         {
             foreach(var produto in produtos)
             {
-                Console.WriteLine($"{produto.Nome}, {produto.Preco}, {produto.Categoria}");
+                Console.WriteLine($"Nome: {produto.Nome}, Preço: R${produto.Preco}, Categoria: {produto.Categoria}");
             }
+
         }
         public void AdicionarProduto(List<Produto> produtos)
         {
@@ -38,6 +40,12 @@ namespace Estoque.CRUD
 
             if (produtoBucsar != null)
             {
+                if(!produtoBucsar.ConfirmarAlteracao())
+                {
+                    Console.WriteLine("Voltando ...");
+                    return;
+                }
+
                 produtos.Remove(produtoBucsar);
 
             }
@@ -55,30 +63,15 @@ namespace Estoque.CRUD
             Produto produtoBuscar = BuscarProduto(produtos);
             
             if(produtoBuscar != null)
+                produtoBuscar.AtualizarProduto();
+            
+            else
             {
-                Console.WriteLine("Qual informação do produto você gostaria de alterar?");
-                Console.WriteLine("1. Nome \n" +
-                                  "2. Preço \n" +
-                                  "3. Categoria \n");
-
-                int escolha = int.Parse(Console.ReadLine());
-
-                switch (escolha)
-                {
-                    case 1:
-                        Console.WriteLine("Insira o novo nome do produto: ");
-                        string novoNome = Console.ReadLine();
-                        if(!ConfirmarAlteracao())
-                        {
-                            break;
-                        }
-                        break;    
-                }
-
+                Console.WriteLine("Produto não encontrado!");
+                return;
             }
         }
-
-
+        
         private static Produto BuscarProduto(List<Produto> produtos)
         {
             string nomeBusca = Console.ReadLine();
@@ -89,20 +82,7 @@ namespace Estoque.CRUD
             return produtoBucsar;
         }
 
-        private bool ConfirmarAlteracao()
-        {
-            Console.WriteLine("Tem certeza que deseja realizar a alteração?");
-            Console.WriteLine("1. Sim\n" +
-                              "2. Não");
-            int escolha = int.Parse(Console.ReadLine());
 
-            if(escolha == 2)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
+        
     }
 }

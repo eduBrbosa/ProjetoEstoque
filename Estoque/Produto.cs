@@ -19,20 +19,70 @@ namespace Estoque
             Categoria = categoria;
         }
 
-        public void AtualizarNome(string novoNome)
+        public void AtualizarProduto()
         {
-            Nome = novoNome;
-        }
-        public void AtualizarPreco(double novoPreco)
-        {
-            Preco = novoPreco;
-        }
-        public void AtualizarCategoria(string novaCategoria)
-        {
-            Categoria = novaCategoria;
+            Console.WriteLine("Qual informação do produto você gostaria de alterar?");
+            Console.WriteLine("1. Nome \n" +
+                              "2. Preço \n" +
+                              "3. Categoria \n");
+
+            int escolha = int.Parse(Console.ReadLine());
+
+            switch (escolha)
+            {
+                case 1:
+                    Console.WriteLine("Insira o novo nome do produto: ");
+                    string novoNome = Console.ReadLine();
+                    
+                    if (!ConfirmarAlteracao())
+                        break;
+                    
+                    Nome = novoNome;
+                    break;
+
+                case 2:
+                    Console.WriteLine("Insira o novo preço: ");
+                    double novoPreco = double.Parse(Console.ReadLine());
+                    
+                    if (!ConfirmarAlteracao())
+                        break;
+
+                    Preco = novoPreco;
+                    break;
+
+                case 3:
+                    Console.WriteLine("Insira a nova categoria do produto: ");
+                    string novaCategoria = Console.ReadLine();
+
+                    if (!ConfirmarAlteracao())
+                        break;
+
+                    Categoria = novaCategoria;
+                    break;
+            }
+
         }
 
-        
-            
+
+        public bool ConfirmarAlteracao()
+        {
+            Console.WriteLine("Tem certeza que deseja realizar a alteração?");
+            Console.WriteLine("1. Sim\n" +
+                              "2. Não");
+            int escolha = int.Parse(Console.ReadLine());
+
+            if (escolha != 1)
+            {
+                Console.WriteLine("Cancalando operação");
+                return false;
+                
+            }
+
+            return true;
+        }
+
+       
+
+
     }
 }
