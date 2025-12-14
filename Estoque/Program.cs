@@ -49,8 +49,8 @@ namespace Estoque
                 {
                     case 1:
                         Console.Clear();
-                        Console.WriteLine("Lista de produtos cadastrados");
                         crud.ListarProdutos(produtos);
+                        Thread.Sleep(1000);
                         Console.WriteLine("Pressione qualquer tecla para retornar...");
                         Console.ReadLine();
                         Console.Clear();
@@ -58,23 +58,28 @@ namespace Estoque
                     case 2:
                         Console.Clear();
                         crud.AdicionarProduto(produtos);
+                        Thread.Sleep(2000);
                         Console.Clear();
                         break;
                     case 3:
                         Console.Clear();
                         crud.AtualizarProduto(produtos);
+                        Thread.Sleep(2000);
                         Console.Clear();
                         break;
                     case 4:
                         Console.Clear();
                         crud.RemoverProduto(produtos);
+                        Thread.Sleep(2000);
                         Console.Clear();
                         break;
                     case 0:
                         Console.WriteLine("Finalizando . . . ");
+                        Thread.Sleep(1000);
                         return;
                     default:
                         Console.WriteLine("Opção inválida!");
+                        Thread.Sleep(1500);
                         Console.Clear();
                         break;
                 }
@@ -86,7 +91,6 @@ namespace Estoque
 
             
 
-        Console.ReadLine();
         }
 
     }

@@ -38,6 +38,7 @@ namespace Estoque
                         break;
                     
                     Nome = novoNome;
+                    Console.WriteLine("Nome do produto alterado com sucesso!");
                     break;
 
                 case 2:
@@ -48,6 +49,7 @@ namespace Estoque
                         break;
 
                     Preco = novoPreco;
+                    Console.WriteLine("Preço do produto alterado com sucesso!");
                     break;
 
                 case 3:
@@ -58,6 +60,7 @@ namespace Estoque
                         break;
 
                     Categoria = novaCategoria;
+                    Console.WriteLine("Categoria do produto alterado com sucesso!");
                     break;
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -11,7 +12,9 @@ namespace Estoque.CRUD
     {
         public void ListarProdutos(List<Produto> produtos)
         {
-            foreach(var produto in produtos)
+
+            Console.WriteLine("Lista de produtos cadastrados");
+            foreach (var produto in produtos)
             {
                 Console.WriteLine($"Nome: {produto.Nome}, Preço: R${produto.Preco}, Categoria: {produto.Categoria}");
             }
@@ -29,8 +32,9 @@ namespace Estoque.CRUD
             string categoriaAdicionar = Console.ReadLine();
 
             Produto novoProduto = new Produto(nomeAdicionar, precoAdicionar, categoriaAdicionar);
-
+            
             produtos.Add(novoProduto);
+            Console.WriteLine("Produto adicionado com sucesso!");
         }
 
         public void RemoverProduto(List<Produto> produtos)
@@ -47,6 +51,7 @@ namespace Estoque.CRUD
                 }
 
                 produtos.Remove(produtoBucsar);
+                Console.WriteLine("Produto removido com sucesso!");
 
             }
             else
@@ -64,10 +69,11 @@ namespace Estoque.CRUD
             
             if(produtoBuscar != null)
                 produtoBuscar.AtualizarProduto();
-            
+
             else
             {
                 Console.WriteLine("Produto não encontrado!");
+                Thread.Sleep(2000);
                 return;
             }
         }
